@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Custom styles can be added here using regular CSS if needed. All
+ * styling for the gallery is handled via Tailwind utility classes in
+ * the JSX. This file simply includes the Tailwind directives so that
+ * the framework's base, component, and utility styles are compiled.
+ */
