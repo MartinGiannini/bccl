@@ -24,8 +24,13 @@ jobs:
       - name: Build project
         run: npm run build --if-present
       # Upload the build output to GitHub for the deploy step
+      # Upload the build output to GitHub for the deploy step
+      # The v1 release of `actions/upload-pages-artifact` depends on
+      # `actions/upload-artifact@v3`, which was deprecated on January 30,
+      # 2025【820796191510096†L45-L66】. Upgrading to v3 ensures the workflow
+      # uses the supported v4 artifact backend.
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
@@ -36,6 +41,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # Deploy the artifact to GitHub Pages. v1 relied on deprecated
+      # artifact actions; v4 is the latest version compatible with
+      # `upload-pages-artifact@v3`【820796191510096†L45-L66】.
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
