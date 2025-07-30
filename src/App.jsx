@@ -72,7 +72,8 @@ export default function App() {
             <img
               src={showModified ? modified : original}
               alt={showModified ? 'Themed portrayal' : 'Original portrait'}
-              className="w-full h-auto object-cover rounded shadow-lg transition-transform duration-300 hover:scale-105"
+              onClick={() => toggleImagen(persona.id)}
+  className="w-32 h-32 md:w-40 md:h-40 object-cover rounded-md cursor-pointer transition-opacity duration-300 hover:opacity-75"
             />
           </button>
         ))}
